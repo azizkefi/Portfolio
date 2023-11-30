@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: Humanoid;
+  src: url("/fonts/HUMANOIDSTRAIGHT.TTF") format('truetype');
+ 
+}
+ 
+@font-face {
+  font-family: Droid;
+  src: url("/fonts/DROID.ttf") format('truetype');
+
+}
+#root {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("./assets/bg4.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body {
+  margin: 0;
+  font-family: Droid;
+  src: url("/fonts/DROID.ttf") format('truetype');
+}
