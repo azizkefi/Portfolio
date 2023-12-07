@@ -93,8 +93,8 @@ export const Interface = () => {
 
  <SkillsSection />
 <Section>
-<Lottie animationData={Construction} style={{ width:400,height:400 }} className='mt-72'/> 
-<div className='bg-yellow-500 p-4  mb-8 font-secondary w-full'><h1 className='text-5xl  font-bold '>The Advertising Signs for our projects display are under construction , please wait for it.</h1></div>
+<Lottie animationData={Construction} style={{ width:400,height:400 }} className='xs:mt-8'/> 
+<div className='bg-yellow-500 p-4  mb-32 font-secondary w-full'><h1 className='text-5xl  font-bold '>The Advertising Signs for our projects display are under construction , please wait for it.</h1></div>
 
 </Section>
 <ContactSection/>
@@ -243,7 +243,7 @@ const skills = [
   return (
     <Section >
        
-      <div className=" w-1/4 ml-16 mt-8 ">
+      <div className=" w-96 xs:ml-4 2xl:ml-16 mt-8 mb-8">
         <div className="iphone-header bg-black w-full h-8 rounded-t-xl shadow-2xl"></div>
         <div className="iphone-content p-8  bg-white  shadow-2xl border-8 border-black">
           <h2 className="text-5xl font-bold font-secondary text-black">Contact me</h2>
