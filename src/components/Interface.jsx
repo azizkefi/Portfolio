@@ -118,12 +118,12 @@ const skills = [
       level: 70,
     },
     {
-      title: "Blender",
-      level: 40,
+      title: "BlockChain & Solidity",
+      level: 60,
     },
     {
-      title: "Unity",
-      level: 60,
+      title: "Devops",
+      level: 70,
     },
   ];
   const languages = [
@@ -137,7 +137,7 @@ const skills = [
     },
     {
       title: "Arab",
-      level: 80,
+      level: 90,
     },
    
   ];
