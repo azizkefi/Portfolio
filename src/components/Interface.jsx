@@ -1,8 +1,9 @@
 import Lottie from 'lottie-react'
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import Typed from 'typed.js';
 import Construction from "../assets/Animation - 1695487090776.json"
+
 const Section = (props) => {
     const { children } = props;
   
@@ -29,61 +30,51 @@ const Section = (props) => {
       </motion.section>
     );
   };
-const AboutSection = () => {
-  const controls = useAnimation();
-
-  useEffect(() => {
-    const initializeTyped = () => {
-      // Initialize Typed.js for the first typing animation
-      const options1 = {
-        strings: ["Hi, I&rsquo;m Aziz Kefi, welcome to my portfolio."],
-        typeSpeed: 30, // Typing speed in milliseconds
-        onComplete: () => {
-          // Start the second typing animation after the first one ends
-          const options2 = {
-            strings: [
-              "I&rsquo;m a FullStack Developer and I love creating appealing websites. Let&rsquo;s dive in my world.",
-            ],
-            typeSpeed: 30, // Typing speed in milliseconds
-          };
-          const typed2 = new Typed(".typing-animation2", options2);
-        },
+  const AboutSection = () => {
+    const controls = useAnimation();
+    const typingRef = useRef(null);
+  
+    useEffect(() => {
+      const initializeTyped = () => {
+        // Initialize Typed.js for the first typing animation
+        const options1 = {
+          strings: ["Hi, I&rsquo;m Aziz Kefi, welcome to my portfolio.",
+            "I&rsquo;m a FullStack Developer and I love creating appealing websites. Let&rsquo;s dive in my world."],
+          typeSpeed: 40, // Typing speed in milliseconds
+        };
+  
+        const typed = new Typed(typingRef.current, options1);
+  
+        // Cleanup the Typed.js instances when component unmounts
+        return () => {
+          typed.destroy();
+        };
       };
-      const typed1 = new Typed(".typing-animation1", options1);
-
-      // Cleanup the Typed.js instances when component unmounts
-      return () => {
-        typed1.destroy();
-      };
-    };
-
-    // Animate the entire UI (scale and opacity) and then initialize Typed.js
-    controls.start({ scale: 1, opacity: 1, transition: { duration: 0.8 } }).then(initializeTyped);
-  }, [controls]);
-
-  return (
-    <>
-      <Section bgColor="bg-blue-200">
-        <motion.div className="flex justify-between items-center sm:ml-8 w-full sm:w-1/2 bg-gray-200 p-2 rounded-t-lg">
-          <p className="text-black font-bold">TERMINAL</p>
-          <div className="flex space-x-2">
-            <button className="w-4 h-4 bg-red-500 rounded-full"></button>
-            <button className="w-4 h-4 bg-yellow-500 rounded-full"></button>
-            <button className="w-4 h-4 bg-green-500 rounded-full"></button>
-          </div>
-        </motion.div>
-        <motion.div className="flex flex-col w-full sm:w-1/2 sm:ml-8 rounded-b-xl bg-black p-8">
-          <h1 className="font-bold text-4xl font-secondary text-green-500">
-            SYS32 &gt; <span className="typing-animation1"></span>
-          </h1>
-          <h3 className="font-bold text-2xl font-secondary text-green-500 mt-8">
-            <span className="typing-animation2"></span>
-          </h3>
-        </motion.div>
-      </Section>
-    </>
-  );
-};
+  
+      // Animate the entire UI (scale and opacity) and then initialize Typed.js
+      controls.start({ scale: 1, opacity: 1, transition: { duration: 0.8 } }).then(initializeTyped);
+    }, [controls]);
+  
+    return (
+      <>
+        <Section bgColor="bg-blue-200">
+          <motion.div className="flex justify-between items-center sm:ml-8 w-full sm:w-1/2 bg-gray-200 p-2 rounded-t-lg">
+            <p className="text-black font-bold">TERMINAL</p>
+            <div className="flex space-x-2">
+              <button className="w-4 h-4 bg-red-500 rounded-full"></button>
+              <button className="w-4 h-4 bg-yellow-500 rounded-full"></button>
+              <button className="w-4 h-4 bg-green-500 rounded-full"></button>
+            </div>
+          </motion.div>
+          <motion.div className="flex flex-col w-full sm:w-1/2 sm:ml-8 rounded-b-xl bg-black p-8">
+            <h1 className="font-bold text-4xl font-secondary text-green-500">
+              SYS32 &gt; <span ref={typingRef}></span>
+            </h1>
+          </motion.div>
+        </Section>
+      </>
+    );
+  };
 
 
 export const Interface = () => {
@@ -93,8 +84,8 @@ export const Interface = () => {
 
  <SkillsSection />
 <Section>
-<Lottie animationData={Construction} style={{ width:400,height:400 }} className='xs:mt-8'/> 
-<div className='bg-yellow-500 p-4  mb-32 font-secondary w-full'><h1 className='text-5xl  font-bold '>The Advertising Signs for our projects display are under construction , please wait for it.</h1></div>
+<Lottie animationData={Construction} style={{ width:200,height:200 }} className='xs:mt-8'/> 
+<div className='bg-yellow-500 rounded-xl p-4  mb-32 font-secondary w-full'><h1 className='text-2xl  font-bold '>The Advertising Signs for our projects display are under construction , please wait for it.</h1></div>
 
 </Section>
 <ContactSection/>
