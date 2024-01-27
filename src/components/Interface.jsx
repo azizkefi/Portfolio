@@ -38,9 +38,14 @@ const Section = (props) => {
       const initializeTyped = () => {
         // Initialize Typed.js for the first typing animation
         const options1 = {
-          strings: ["Hi, I&rsquo;m Aziz Kefi, welcome to my portfolio.",
-            "I&rsquo;m a FullStack Developer and I love creating appealing websites. Let&rsquo;s dive in my world."],
-          typeSpeed: 40, // Typing speed in milliseconds
+          strings: ["Hi, I&rsquo;m Aziz Kefi, welcome to my portfolio.^1000",
+            "I&rsquo;m a FullStack Developer and I love creating appealing websites.^1000",
+            " Let&rsquo;s dive into my field.^4000 "
+          ],
+          typeSpeed: 30,
+          showCursor: true,
+          loop: true,
+          loopCount:Infinity
         };
   
         const typed = new Typed(typingRef.current, options1);
